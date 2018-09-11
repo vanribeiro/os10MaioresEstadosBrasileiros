@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class SimpleReadCSV {
 	private String arquivo;
 	private String[] column;
-	private String[] name = new String[28];
-	private String[] Uf = new String[28];
+	private String[] name = new String[27];
+	private Double[] Uf = new Double[27];
 	
 	public SimpleReadCSV(String arquivo) {
 		this.arquivo = arquivo;
@@ -33,29 +33,30 @@ public class SimpleReadCSV {
 	public void setNome(String[] name) {
 		this.name = name;
 	}
-	public String[] getUf() {
+	public Double[] getUf() {
 		return Uf;
 	}
-	public void setUf(String[] uf) {
-		this.Uf = uf;
+	public void setUf(Double[] Uf) {
+		this.Uf = Uf;
 	}
 	
 	public void reading() {
-		int i = 0;
+		
 		try {
 			System.setIn(new FileInputStream(new File(arquivo)));
 		} catch(FileNotFoundException e) {
 			System.out.println("Arquivo não encontrado!");
 		}
 		
+		int i = -1;
 		Scanner read = new Scanner(System.in);
-		String line = " ";
+		String line;
 		while(read.hasNext()) {
 			i++;
 			line = read.nextLine();
 			column = line.split(";");
-			name[i] = column[1];
-			Uf[i] = column[0];
+			name[i] = column[0];
+			Uf[i] = Double.parseDouble(column[1].replace(",", "."));
 		}
 		read.close();
 	}

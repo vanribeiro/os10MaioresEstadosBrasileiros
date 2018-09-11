@@ -2,18 +2,18 @@ package challenge;
 
 public class State {
 	
-	private String Uf;
+	private Double Uf;
 	private String name;
 	
-	public State(String Uf, String name) {
+	public State(Double Uf, String name) {
 		this.Uf = Uf;
 		this.name = name;
 	}
 	
-	public String getUf() {
+	public Double getUf() {
 		return Uf;
 	}
-	public void setUf(String uf) {
+	public void setUf(Double uf) {
 		Uf = uf;
 	}
 	public String getName() {

@@ -10,27 +10,29 @@ import java.util.List;
 
 public class Main {
 	static List<State> state = new ArrayList<State>();
-	static String[] Uf = new String[28];
-	static String[] name = new String[28];
-	static Double[] largeState = new Double[28];
+	static Double[] Uf = new Double[27];
+	static String[] name = new String[27];
 	
 	public List<State> listThe10largestStatesInBrazil() {
 		
 		
 		SortListState justSort = new SortListState();
 		
-		for(int i = 0; i <= 10; i++) {
+		for(int i = 0; i < 10; i++) {
 			state.add(new State(Uf[i], name[i]));
-		} state.remove(0);
-		//Collections.sort(state, justSort.reversed());
+		}
 		
+		Collections.sort(state, justSort.reversed());
+		
+		return state;
+	}
+	
+	public static void StateResults() {
 		for(int i = 0; i < 10; i++) {
 			System.out.println(i+1 + " " +
 					state.get(i).getName() +
 					" " + state.get(i).getUf());
 		}
-		
-		return state;
 	}
 	
 	public static void main(String[] args) {
@@ -42,7 +44,7 @@ public class Main {
 		Uf = rdFile.getUf();
 		name = rdFile.getName();
 		objectMain.listThe10largestStatesInBrazil();
-		
+		StateResults();
 	}
 
 }
