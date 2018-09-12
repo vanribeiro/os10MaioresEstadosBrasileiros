@@ -1,9 +1,15 @@
 package challenge;
 
-public class State {
+import java.util.Comparator;
+
+public class State implements Comparator<State>{
 	
 	private Double Uf;
 	private String name;
+	
+	State() {
+		
+	}
 	
 	public State(Double Uf, String name) {
 		this.Uf = Uf;
@@ -22,7 +28,10 @@ public class State {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
-	
+
+	@Override
+	public int compare(State o1, State o2) {
+		return Double.compare(o1.getUf(), o2.getUf());
+	}	
 
 }
