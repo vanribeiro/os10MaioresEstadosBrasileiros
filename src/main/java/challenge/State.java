@@ -19,12 +19,15 @@ public class State implements Comparator<State>{
 	public Double getUf() {
 		return Uf;
 	}
+	
 	public void setUf(Double uf) {
 		Uf = uf;
 	}
+	
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}

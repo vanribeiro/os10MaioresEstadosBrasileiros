@@ -1,7 +1,15 @@
-> Task :clean
-> Task :compileJava
+Starting a Gradle Daemon, 1 incompatible and 1 stopped Daemons could not be reused, use --status for details
+> Task :compileJava UP-TO-DATE
 > Task :processResources NO-SOURCE
-> Task :classes
+> Task :classes UP-TO-DATE
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
 
-> Task :compileTestJava FAILED
-3 actionable tasks: 3 executed
+> Task :test
+
+challenge.MainTest > test FAILED
+    java.lang.NullPointerException at MainTest.java:11
+
+> Task :test FAILED
+3 actionable tasks: 2 executed, 1 up-to-date

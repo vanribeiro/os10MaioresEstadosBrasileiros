@@ -18,24 +18,31 @@ public class SimpleReadCSV {
 	public String getArquivo() {
 		return arquivo;
 	}
+	
 	public void setArquivo(String arquivo) {
 		this.arquivo = arquivo;
 	}
+	
 	public String[] getColuna() {
 		return column;
 	}
+	
 	public void setColumn(String[] column) {
 		this.column = column;
 	}
+	
 	public String[] getName() {
 		return name;
 	}
+	
 	public void setNome(String[] name) {
 		this.name = name;
 	}
+	
 	public Double[] getUf() {
 		return Uf;
 	}
+	
 	public void setUf(Double[] Uf) {
 		this.Uf = Uf;
 	}
