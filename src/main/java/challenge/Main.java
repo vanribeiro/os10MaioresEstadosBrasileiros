@@ -1,53 +1,46 @@
 package challenge;
 
-import challenge.SimpleReadCSV;
-import challenge.State;
-import java.util.ArrayList;
+import java.io.IOException;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
-
+import challenge.State;
 
 public class Main{
-	static List<State> state = new ArrayList<State>();
-	static Double[] Uf = new Double[27];
-	static String[] name = new String[27];
 	
-	public List<State> listThe10largestStatesInBrazil() {
-		State st = new State();
+	public List<State> listThe10largestStatesInBrazil(List<State> rdStates) {
+		Comparator<State> compareSizeState = new Comparator<State>() {
+			public int compare(State one, State two) {
+				return Double.compare(one.getSizeState(), two.getSizeState());
+			}
+		};
 		
-		for(int i = 0; i < 10; i++) {
-			state.add(new State(Uf[i], name[i]));
-		}
-		
-		Collections.sort(state, st.reversed());
-		
-		return state;
+		Collections.sort(rdStates, compareSizeState.reversed());
+		return rdStates.subList(0, 10);
 	}
 	
-	
-	public static void StateResults() {
+	public static void stateResults(List<State> rdStates) {
 		System.out.printf("-------------------------------------------------\n");
 		System.out.printf(" Os 10 maiores estados brasileiros - (1.000 Km\u00B2)\n");
 		System.out.printf("-------------------------------------------------\n");
 		System.out.printf("| Nº | Nome do Estado            | \006rea         |\n");
 		System.out.printf("-------------------------------------------------\n");
 		for(int i = 0; i < 10; i++){
+			State state = rdStates.get(i);
 			System.out.printf("| %02d | %-18s\t | %s\t|\n", 
-					i+1, state.get(i).getName(), 
-					state.get(i).getUf().toString().replace(".", ","));
+					i+1, 
+					state.getName(), 
+					state.getSizeState().toString().replace(".", ","));
 		}System.out.printf("-------------------------------------------------\n");
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		Main objectMain = new Main();
-		String doc = "EstadosBrasileirosPorOrdemAlfabética.csv";
-		SimpleReadCSV rdFile = new SimpleReadCSV(doc);
-		rdFile.reading();
-		
-		Uf = rdFile.getUf();
-		name = rdFile.getName();
-		objectMain.listThe10largestStatesInBrazil();
-		StateResults();
+		String docFile = "EstadosBrasileirosPorOrdemAlfabética.csv";
+		SimpleReadCSV readingFile = new SimpleReadCSV();
+		List<State> statesList = readingFile.readingFile(docFile);
+		List<State> top10States = objectMain.listThe10largestStatesInBrazil(statesList);
+		stateResults(top10States);
 	}
-
+	
 }

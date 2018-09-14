@@ -1,40 +1,20 @@
 package challenge;
 
-import java.util.Comparator;
-
-public class State implements Comparator<State>{
+public class State{
+	private String nameState;
+	private Double sizeState;
 	
-	private Double Uf;
-	private String name;
-	
-	State() {
-		
-	}
-	
-	public State(Double Uf, String name) {
-		this.Uf = Uf;
-		this.name = name;
-	}
-	
-	public Double getUf() {
-		return Uf;
-	}
-	
-	public void setUf(Double uf) {
-		Uf = uf;
+	public State(String name, Double sizeState) {
+		this.nameState = name;
+		this.sizeState = sizeState;
 	}
 	
 	public String getName() {
-		return name;
+		return this.nameState;
+	}
+
+	public Double getSizeState() {
+		return sizeState;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	@Override
-	public int compare(State o1, State o2) {
-		return Double.compare(o1.getUf(), o2.getUf());
-	}	
-
 }
