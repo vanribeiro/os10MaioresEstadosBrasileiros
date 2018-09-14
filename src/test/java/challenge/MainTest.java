@@ -4,8 +4,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
-public class MainTest {
-
+public class MainTest{
+	
 	@Test
 	public void test() {
 		List<State> states = new Main().listThe10largestStatesInBrazil();

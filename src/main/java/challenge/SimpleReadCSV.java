@@ -31,9 +31,10 @@ public class SimpleReadCSV{
 		while(reading.hasNext()) {
 			line = reading.nextLine();
 			String[] column = line.split(";");
-			String nameState = column[0];
-			Double sizeState = Double.parseDouble(column[1].replace(",", "."));
-			rdStates.add(new State(nameState, sizeState));
+			String UF = column[0];
+			String nameState = column[1];
+			Double sizeState = Double.parseDouble(column[2].replace(",", "."));
+			rdStates.add(new State(UF, nameState, sizeState));
 		}
 		reading.close();
 		return rdStates;
